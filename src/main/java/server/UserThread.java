@@ -36,15 +36,17 @@ public class UserThread extends Thread {
                 }
                 String targetUser = commandParts[0].trim();
                 String content = commandParts[1].trim();
-                server.sendMessage(targetUser, login + ": " + content);
+                if (!server.sendMessage(targetUser, login + ": " + content)) {
+                    sendMessage("User " + targetUser + " doesn't connect");
+                }
             }
         } catch (IOException e) {
             server.removeUser(login);
         }
     }
 
-    public void sendMessage(String str) {
-        writer.println(str);
+    public void sendMessage(String msg) {
+        writer.println(msg);
     }
 
     public void printUsers() {

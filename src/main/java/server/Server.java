@@ -45,8 +45,13 @@ public class Server {
         loggedUsers.put(login, userThread);
     }
 
-    public void sendMessage(String login, String str) {
-        loggedUsers.get(login).sendMessage(str);
+    public boolean sendMessage(String targetUserLogin, String msg) {
+        UserThread targetUserThread = loggedUsers.get(targetUserLogin);
+        if (targetUserThread != null) {
+            targetUserThread.sendMessage(msg);
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
