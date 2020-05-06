@@ -37,7 +37,7 @@ public class UserThread extends Thread {
                 String targetUser = commandParts[0].trim();
                 String content = commandParts[1].trim();
                 if (!server.sendMessage(targetUser, login + ": " + content)) {
-                    sendMessage("User " + targetUser + " doesn't connect");
+                    sendMessage("User " + targetUser + " isn't connected");
                 }
             }
         } catch (IOException e) {
